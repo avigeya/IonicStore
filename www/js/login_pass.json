@@ -1,0 +1,30 @@
+[
+	{
+		"id": "1111",
+		"login": "Test",
+		"pass":  "1234",
+		"last_name": "Testov",
+		"phone": "12452356"
+	},
+	{
+		"id": "4111",
+		"login": "Arkadey",
+		"pass":  "2222",
+		"last_name": "Testov",
+		"phone": "12452356"
+	},
+	{
+		"id": "3111",
+		"login": "As",
+		"pass":  "2345",
+		"last_name": "Testov",
+		"phone": "12452356"
+	},
+	{
+		"id": "1131",
+		"login": "Den",
+		"pass":  "1111",
+		"last_name": "Testov",
+		"phone": "12452356"
+	}
+]
