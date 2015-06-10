@@ -1,0 +1,35 @@
+<ion-view view-title="Main">
+    <ion-side-menus>
+        <ion-side-menu-content>
+
+            <div class="bar bar-header bar-light bar-store-list padding-bottom">
+            	<!--<div data-ng-include="side-bar.html"></div>                -->
+
+            </div>
+            <ion-content style="padding-top: 40px;" class="padding-top">
+            <div class="row">
+            	
+            		<div class="col" ng-repeat="item in categories[catID].items">
+            			<img data-ng-src="{{item.url_img}}">
+            			<div>{{item.price}}</div>
+            			<p>{{item.name_goods}}</p>
+            		</div>
+            		
+            	
+            </div>
+            	
+            	
+            </ion-content>
+        </ion-side-menu-content>
+        <ion-side-menu expose-aside-when="large">
+        SideBar
+
+        <ul >
+        	<li ng-repeat="category in categories"><a href="{{category.link}}" >{{category.nameCat}}</a></li>
+        </ul>
+
+
+   
+        </ion-side-menu>
+    </ion-side-menus>
+</ion-view>
