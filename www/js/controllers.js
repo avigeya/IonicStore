@@ -8,12 +8,14 @@ angular.module('starter.controllers', [])
 
   $scope.myLogin = function(){
 
-    LoginSrvc.LoginUser($scope.data.username, $scope.data.password).myNotification(function(data){
+    LoginSrvc.LoginUser($scope.data.username, $scope.data.password).then(function(data){
      
      //alert('Success!');
       console.log(data);
       $scope.keyError = false;
       //$state.go('store',{id:1});*/
+    }, function(data){
+      console.log(data);
     });
   }
 })
