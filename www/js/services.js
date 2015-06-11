@@ -1,23 +1,26 @@
-angular.module('starter.services', [])
+angular.module('starter.services', ['ngStorage'])
 
-.service('LoginSrvc',  function($q, users, $http, $localstorage){
+.service('LoginSrvc',  function($q, users, $http, $localStorage){
   return{
     LoginUser:function(mlogin, mpass){
       var deferred = $q.defer();
       var promise = deferred.promise;
       var successData  = "Success!!!";
       var errorData = "You have error...";
-      var my_users = $http.get('/js/login_pass.json');
-      var dd = JSON.parse(my_users);
-      console.log(dd.login);
+      var my_users = $http.get('js/login_pass.json');
+      //var dd = JSON.parse(my_users);
+      //console.log(dd.login);
+$http.get('js/login_pass.json').success(function(data){
+  console.log(data);
 
       if (mlogin && mpass) {
-        angular.forEach(dd, function(user){
+        angular.forEach(data, function(user){
            console.log(user.login);
           if( (user.login === mlogin) && (user.pass === mpass) ){
-             $localstorage.set('login',  user.login);
-             $localstorage.set('pass',  mpass);
-
+            // $localstorage.set('login',  user.login);
+             //$localstorage.set('pass',  mpass);
+             $localStorage.login = user.login;
+             $localStorage.pass = mpass;
              deferred.resolve(successData);
              
           }
@@ -26,17 +29,20 @@ angular.module('starter.services', [])
           }
         })
       };
+}).error(function(){})
+
+
       
-      promise.myNotification = function(fn){
+      /*promise.myNotification = function(fn){
         promise.then(fn,fn);
         return promise;
-      }
+      }*/
 
       return promise;
     }
   }
 })
-.factory('$localstorage', ['$window', function($window) {
+/*.factory('$localstorage', ['$window', function($window) {
   return {
     set: function(key, value) {
       $window.localStorage[key] = value;
@@ -51,7 +57,7 @@ angular.module('starter.services', [])
       return JSON.parse($window.localStorage[key] || '{}');
     }
   }
-}])
+}])*/
 
 
 ;
